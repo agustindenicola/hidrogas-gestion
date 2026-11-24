@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hidrogas Gestion Local</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/logo-hidrogas.svg" alt="Hidrogas" />
+        <div>
+          <strong>Hidrogas</strong>
+          <span>Gestion local de mostrador</span>
+        </div>
+      </div>
+      <div class="top-status">
+        <a class="top-link" href="/movimientos.html">Tickets y cierres</a>
+        <span id="productCount">0 productos</span>
+        <span id="todayLabel"></span>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="workspace">
+        <div class="search-panel">
+          <label for="searchInput">Buscar por codigo, nombre, medida o como lo pide el cliente</label>
+          <div class="search-row">
+            <input id="searchInput" type="search" placeholder="Ej: 01, cano 20, codo 90, pegamento, cosito tanque" autofocus />
+            <button id="clearSearch" type="button">Limpiar</button>
+          </div>
+          <div class="helper-row">
+            <span>Tip: si escribis <strong>1</strong>, busca el codigo <strong>01</strong>.</span>
+            <span>Enter agrega el primer resultado al pedido.</span>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Producto</th>
+                <th>Rubro</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Venta</th>
+                <th>Ubicacion</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody id="productsBody"></tbody>
+          </table>
+          <div class="empty" id="emptyState">No hay resultados para esa busqueda.</div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="cart-card">
+          <div class="card-heading">
+            <span>Operacion</span>
+            <div class="mode-switch">
+              <button class="active" type="button" data-mode="budget">Presupuesto</button>
+              <button type="button" data-mode="sale">Venta</button>
+            </div>
+          </div>
+
+          <label>
+            Cliente
+            <input id="customerInput" type="text" placeholder="Consumidor final" />
+          </label>
+
+          <div class="billing-grid">
+            <label>
+              CUIT / DNI
+              <input id="taxIdInput" type="text" placeholder="Opcional" />
+            </label>
+            <label>
+              Condicion
+              <select id="taxConditionInput">
+                <option value="Consumidor final">Consumidor final</option>
+                <option value="Responsable inscripto">Responsable inscripto</option>
+                <option value="Monotributo">Monotributo</option>
+                <option value="Exento">Exento</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="billing-grid">
+            <label>
+              Tipo de factura
+              <select id="invoiceTypeInput">
+                <option value="">No corresponde</option>
+                <option value="A">Factura A</option>
+                <option value="B">Factura B</option>
+                <option value="C">Factura C</option>
+              </select>
+            </label>
+            <label>
+              Email
+              <input id="emailInput" type="email" placeholder="Opcional" />
+            </label>
+          </div>
+
+          <div class="billing-grid">
+            <label>
+              Telefono
+              <input id="phoneInput" type="text" placeholder="Opcional" />
+            </label>
+            <label>
+              Direccion
+              <input id="addressInput" type="text" placeholder="Opcional" />
+            </label>
+          </div>
+
+          <div class="billing-grid">
+            <label>
+              Medio de pago
+              <select id="paymentMethodInput">
+                <option value="">Sin definir</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Debito">Debito</option>
+                <option value="Credito">Credito</option>
+              </select>
+            </label>
+            <label>
+              Vendedor
+              <input id="sellerInput" type="text" placeholder="Opcional" />
+            </label>
+          </div>
+
+          <label>
+            Descuento
+            <input id="discountInput" type="number" step="0.01" min="0" placeholder="Importe en pesos" />
+          </label>
+
+          <p class="billing-note" id="billingNote">
+            Para consumidor final no hace falta completar datos fiscales.
+          </p>
+
+          <label>
+            Observaciones
+            <textarea id="notesInput" rows="2" placeholder="Ej: retira por local, por encargue, enviar precio"></textarea>
+          </label>
+
+          <div class="cart-items" id="cartItems"></div>
+
+          <div class="total-row">
+            <span>Total</span>
+            <strong id="cartTotal">$ 0,00</strong>
+          </div>
+
+          <div class="actions-grid">
+            <button id="saveButton" type="button">Guardar</button>
+            <button id="copyButton" type="button">Copiar texto</button>
+          </div>
+        </section>
+
+        <section class="edit-card">
+          <div class="card-heading">
+            <span>Edicion rapida</span>
+            <button id="newProductButton" class="panel-action" type="button">Nuevo</button>
+          </div>
+          <p id="editHint">Selecciona un producto de la tabla para ajustar precio, stock o ubicacion.</p>
+          <form id="editForm" class="edit-form hidden">
+            <strong id="editTitle"></strong>
+            <label>
+              Nombre
+              <input id="editName" type="text" />
+            </label>
+            <div class="billing-grid">
+              <label>
+                Rubro
+                <input id="editCategory" type="text" />
+              </label>
+              <label>
+                Marca
+                <input id="editBrand" type="text" />
+              </label>
+            </div>
+            <div class="billing-grid">
+              <label>
+                Codigo proveedor
+                <input id="editProviderCode" type="text" />
+              </label>
+              <label>
+                Medida
+                <input id="editMeasure" type="text" />
+              </label>
+            </div>
+            <label>
+              Precio
+              <input id="editPrice" type="number" step="0.01" min="0" />
+            </label>
+            <label>
+              Stock
+            <input id="editStock" type="number" step="1" min="0" />
+            </label>
+            <label>
+              Stock minimo
+            <input id="editMinStock" type="number" step="1" min="0" />
+            </label>
+            <label>
+              Unidad de venta
+              <select id="editUnit">
+                <option value="unidad">Unidad</option>
+                <option value="metro">Metro</option>
+              </select>
+            </label>
+            <label>
+              Ubicacion
+              <input id="editLocation" type="text" />
+            </label>
+            <label>
+              Sinonimos
+              <input id="editSynonyms" type="text" />
+            </label>
+            <label>
+              Observaciones
+              <textarea id="editNotes" rows="2"></textarea>
+            </label>
+            <button type="submit">Guardar producto</button>
+          </form>
+        </section>
+      </aside>
+    </main>
+
+    <section class="summary-panel">
+      <article>
+        <span>Ventas hoy</span>
+        <strong id="salesToday">$ 0,00</strong>
+      </article>
+      <article>
+        <span>Ventas del mes</span>
+        <strong id="salesMonth">$ 0,00</strong>
+      </article>
+      <article>
+        <span>Presupuestos pendientes</span>
+        <strong id="pendingBudgets">0</strong>
+      </article>
+      <article>
+        <span>Productos por encargue</span>
+        <strong id="orderedItems">0</strong>
+      </article>
+    </section>
+
+    <section class="updates-panel">
+      <div class="card-heading">
+        <span>Actualizacion de precios</span>
+          <button id="refreshUpdate" class="panel-action" type="button">Actualizar estado</button>
+      </div>
+      <div class="update-grid" id="updateGrid">
+        <p class="subline">Todavia no hay reportes de actualizacion.</p>
+      </div>
+      <div class="price-update-box">
+        <label>
+          Nueva lista Tigre
+          <input id="priceListInput" type="file" accept=".xlsx" />
+        </label>
+        <div class="button-row">
+          <button id="previewPriceUpdate" class="panel-action" type="button">Revisar lista</button>
+          <button id="applyPriceUpdate" class="panel-action" type="button" disabled>Aplicar cambios</button>
+        </div>
+        <div class="price-update-detail" id="priceUpdateDetail"></div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

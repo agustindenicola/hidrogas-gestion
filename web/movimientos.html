@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tickets y cierres | Hidrogas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/logo-hidrogas.svg" alt="Hidrogas" />
+        <div>
+          <strong>Hidrogas</strong>
+          <span>Tickets, presupuestos y cierres</span>
+        </div>
+      </div>
+      <div class="top-status">
+        <a class="top-link" href="/">Volver al mostrador</a>
+        <span id="todayLabel"></span>
+      </div>
+    </header>
+
+    <main class="admin-shell">
+      <section class="stock-panel">
+        <div class="card-heading">
+          <span>Reposicion</span>
+          <button id="refreshLowStock" class="panel-action" type="button">Actualizar</button>
+        </div>
+        <div class="stock-grid" id="lowStockGrid"></div>
+      </section>
+
+      <section class="closures-panel">
+        <div class="card-heading">
+          <span>Cierres</span>
+          <div class="button-row">
+            <button id="backupButton" class="panel-action" type="button">Backup</button>
+            <button id="refreshClosures" class="panel-action" type="button">Actualizar</button>
+          </div>
+        </div>
+        <div class="closure-alert" id="closureAlert"></div>
+        <div class="closure-grid" id="closureGrid"></div>
+      </section>
+
+      <section class="history-panel movement-page">
+        <div class="card-heading">
+          <span>Tickets y presupuestos</span>
+          <button id="refreshHistory" class="panel-action" type="button">Actualizar</button>
+        </div>
+        <div class="history-filters">
+          <input id="historySearch" type="search" placeholder="Buscar numero, cliente, producto, vendedor" />
+          <select id="historyPeriod">
+            <option value="">Todos</option>
+            <option value="today">Hoy</option>
+            <option value="month">Mes actual</option>
+          </select>
+          <select id="historyStatus">
+            <option value="">Ventas y presupuestos</option>
+            <option value="vendido">Solo ventas</option>
+            <option value="pendiente">Solo presupuestos</option>
+            <option value="convertido">Presupuestos vendidos</option>
+            <option value="anulado">Anulados</option>
+          </select>
+          <input id="dateFrom" type="date" />
+          <input id="dateTo" type="date" />
+        </div>
+        <div class="movement-totals" id="movementTotals"></div>
+        <div class="movement-layout">
+          <div class="history-list" id="historyList"></div>
+          <div class="ticket-detail hidden" id="ticketDetail"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <script src="movimientos.js"></script>
+  </body>
+</html>

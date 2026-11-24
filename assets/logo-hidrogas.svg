@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" role="img" aria-labelledby="title desc">
+  <title id="title">Hidro Gas</title>
+  <desc id="desc">Logo adaptado para Hidrogas con Hidro en verde y Gas en amarillo.</desc>
+  <rect width="520" height="190" rx="22" fill="#ffffff"/>
+  <path
+    d="M24 142c42-30 81-19 119-11 42 9 82 13 130-22 34-25 74-33 122-24 38 7 68-1 96-25"
+    fill="none"
+    stroke="#7cc8ef"
+    stroke-width="16"
+    stroke-linecap="round"
+    opacity="0.78"
+  />
+  <path
+    d="M32 154c55-27 95-9 144-2 54 8 93-2 136-30 36-24 78-20 119-14 25 4 47 2 65-7"
+    fill="none"
+    stroke="#1ea7e1"
+    stroke-width="7"
+    stroke-linecap="round"
+    opacity="0.65"
+  />
+  <g transform="translate(42 39)">
+    <text
+      x="0"
+      y="45"
+      fill="#009245"
+      font-family="Arial Black, Arial, Helvetica, sans-serif"
+      font-size="54"
+      font-weight="900"
+    >Hidro</text>
+    <text
+      x="78"
+      y="118"
+      fill="#f4c400"
+      stroke="#5e5e50"
+      stroke-width="1.4"
+      font-family="Arial Black, Arial, Helvetica, sans-serif"
+      font-size="82"
+      font-weight="900"
+    >Gas</text>
+  </g>
+  <g transform="translate(408 39)">
+    <path
+      d="M50 5c11 30 47 47 47 88 0 31-21 53-49 53S0 124 0 94C0 59 35 38 50 5Z"
+      fill="#009245"
+    />
+    <path
+      d="M47 0c3 28 33 43 33 75 0 22-12 40-30 48 6-14 3-31-8-44-12-15-13-32 5-79Z"
+      fill="#ffc928"
+    />
+  </g>
+</svg>

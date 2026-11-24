@@ -1,0 +1,11 @@
+codigo,codigo_proveedor,nombre,rubro,medida,marca,precio,stock,stock_minimo,ubicacion,sinonimos,observaciones
+01,,Flotante para tanque,Agua,1/2,Generica,4500,12,3,Deposito fondo / Sector tanques,boya tanque cosito tanque valvula corte agua,Producto comun para tanques domiciliarios
+02,,Valvula esferica bronce,Gas,1/2,Itap,8200,8,2,Mostrador / Cajon bronce,llave paso gas valvula corte bronce cosito gas,Consultar medida antes de vender
+03,,Codo PVC 90,Agua,110 mm,Tigre,1900,30,8,Pasillo 1 / Estante PVC,codo cloaca curva pvc desague coso blanco,Para desague cloacal
+04,,Canilla servicio,Jardineria,1/2,Generica,5600,10,3,Pasillo 2 / Griferia,canilla patio jardin pico pared agua,Salida para patio o lavadero
+05,,Teflon rollo grande,Insumos,19 mm,Generica,1200,45,12,Mostrador / Caja insumos,cinta teflon sellador rosca gas agua,Venta rapida de mostrador
+06,,Flexible para calefon,Gas,1/2 x 40 cm,Generica,6800,7,2,Pasillo 3 / Gas,flexible gas calefon cocina manguera amarilla,Verificar largo
+07,,Sifon extensible,Sanitarios,Universal,Generica,3900,14,4,Pasillo 1 / Sanitarios,sifon pileta lavatorio desague acordeon bajo mesada,Producto frecuente para bacha
+08,,Tanque tricapa,Agua,500 litros,Rotoplas,148000,3,1,Deposito fondo / Sector tanques,tanque agua reserva tricapa negro deposito,Confirmar stock y envio
+09,,Bomba periferica,Agua,0.5 HP,Motorarg,89000,4,1,Deposito / Sector bombas,bomba agua presion periferica elevadora motor,Consultar garantia
+10,,Termofusora,Herramientas,800 W,Generica,42000,2,1,Vidriera / Herramientas,maquina termofusion soldadora cano agua herramienta,Incluye boquillas basicas
